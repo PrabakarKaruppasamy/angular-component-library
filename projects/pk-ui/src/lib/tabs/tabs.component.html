@@ -1,0 +1,19 @@
+<div class="pk-tabs" [class]="'pk-tabs--' + variant">
+  <div class="pk-tabs__bar" role="tablist">
+    <button *ngFor="let tab of tabs"
+            class="pk-tabs__tab"
+            [class.pk-tabs__tab--active]="tab.id === activeId"
+            [class.pk-tabs__tab--disabled]="tab.disabled"
+            [disabled]="tab.disabled"
+            role="tab"
+            [attr.aria-selected]="tab.id === activeId"
+            (click)="select(tab)">
+      <span class="material-icons pk-tabs__icon" *ngIf="tab.icon">{{ tab.icon }}</span>
+      {{ tab.label }}
+      <span class="pk-tabs__badge" *ngIf="tab.badge">{{ tab.badge }}</span>
+    </button>
+  </div>
+  <div class="pk-tabs__content" role="tabpanel">
+    <ng-content />
+  </div>
+</div>

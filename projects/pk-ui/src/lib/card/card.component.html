@@ -1,0 +1,14 @@
+<div class="pk-card" [class.pk-card--hoverable]="hoverable" [class.pk-card--flat]="flat" [class]="'pk-card--pad-' + padding">
+  <img *ngIf="image" [src]="image" [alt]="imageAlt" class="pk-card__img" />
+  <div class="pk-card__header" *ngIf="title || icon">
+    <div class="pk-card__icon" *ngIf="icon" [style.color]="iconColor">
+      <span class="material-icons">{{ icon }}</span>
+    </div>
+    <div class="pk-card__titles">
+      <h4 class="pk-card__title" *ngIf="title">{{ title }}</h4>
+      <p class="pk-card__subtitle" *ngIf="subtitle">{{ subtitle }}</p>
+    </div>
+  </div>
+  <div class="pk-card__body"><ng-content /></div>
+  <div class="pk-card__footer"><ng-content select="[pk-card-footer]" /></div>
+</div>

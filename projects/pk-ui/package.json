@@ -1,0 +1,24 @@
+{
+  "name": "@prabakar/pk-ui",
+  "version": "1.0.0",
+  "description": "Enterprise Angular UI Component Library — Button, Input, Modal, Table, Badge, Alert, Toast, Card, Accordion, Tabs",
+  "author": "Prabakar Karuppasamy <prabakaroff@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/PrabakarKaruppasamy/angular-component-library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PrabakarKaruppasamy/angular-component-library.git"
+  },
+  "keywords": [
+    "angular", "components", "ui-library", "angular18",
+    "button", "modal", "table", "toast", "accordion",
+    "design-system", "enterprise"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "@angular/forms": "^18.0.0",
+    "@angular/animations": "^18.0.0"
+  },
+  "sideEffects": false
+}

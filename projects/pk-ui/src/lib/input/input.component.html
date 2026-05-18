@@ -1,0 +1,51 @@
+<div class="pk-input-wrap" [class]="'pk-input-wrap--' + size" [class.pk-input-wrap--error]="!!error" [class.pk-input-wrap--focused]="focused()" [class.pk-input-wrap--disabled]="disabled">
+
+  <label *ngIf="label" [for]="id" class="pk-input__label">
+    {{ label }}
+    <span class="pk-input__required" *ngIf="required" aria-hidden="true">*</span>
+  </label>
+
+  <div class="pk-input__field">
+    <span class="pk-input__icon pk-input__icon--left" *ngIf="leftIcon">
+      <span class="material-icons">{{ leftIcon }}</span>
+    </span>
+
+    <input
+      [id]="id"
+      [type]="effectiveType"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      [attr.maxlength]="maxlength ?? 9999"
+      [value]="value()"
+      [class.has-left-icon]="!!leftIcon"
+      [class.has-right-icon]="!!rightIcon || type === 'password'"
+      [attr.aria-invalid]="!!error"
+      [attr.aria-describedby]="error ? id + '-error' : hint ? id + '-hint' : null"
+      (input)="onInput($event)"
+      (focus)="onFocus($event)"
+      (blur)="onBlur($event)"
+    />
+
+    <!-- Password toggle -->
+    <button *ngIf="type === 'password'" type="button" class="pk-input__icon pk-input__icon--right pk-input__eye"
+            (click)="showPassword.set(!showPassword())" [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'">
+      <span class="material-icons">{{ showPassword() ? 'visibility_off' : 'visibility' }}</span>
+    </button>
+
+    <!-- Right icon (non-password) -->
+    <span class="pk-input__icon pk-input__icon--right" *ngIf="rightIcon && type !== 'password'">
+      <span class="material-icons">{{ rightIcon }}</span>
+    </span>
+  </div>
+
+  <div class="pk-input__footer">
+    <span class="pk-input__error" *ngIf="error" [id]="id + '-error'" role="alert">
+      <span class="material-icons">error_outline</span>{{ error }}
+    </span>
+    <span class="pk-input__hint" *ngIf="hint && !error" [id]="id + '-hint'">{{ hint }}</span>
+    <span class="pk-input__count" *ngIf="charCount">{{ charCount }}</span>
+  </div>
+
+</div>

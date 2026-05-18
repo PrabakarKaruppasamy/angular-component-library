@@ -1,0 +1,20 @@
+<div class="pk-accordion">
+  <div *ngFor="let item of items; let last = last"
+       class="pk-accordion__item"
+       [class.pk-accordion__item--open]="isOpen(item.id)"
+       [class.pk-accordion__item--disabled]="item.disabled"
+       [class.pk-accordion__item--last]="last">
+    <button class="pk-accordion__trigger"
+            [disabled]="item.disabled"
+            [attr.aria-expanded]="isOpen(item.id)"
+            (click)="toggle(item.id)">
+      <span class="pk-accordion__title">{{ item.title }}</span>
+      <span class="material-icons pk-accordion__chevron">
+        {{ isOpen(item.id) ? 'expand_less' : 'expand_more' }}
+      </span>
+    </button>
+    <div class="pk-accordion__body" [class.pk-accordion__body--open]="isOpen(item.id)">
+      <div class="pk-accordion__content">{{ item.content }}</div>
+    </div>
+  </div>
+</div>

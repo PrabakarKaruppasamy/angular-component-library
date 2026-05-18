@@ -1,0 +1,18 @@
+<div class="pk-toast-container" [class]="'pk-toast-container--' + position" aria-live="polite" aria-atomic="false">
+  <div
+    *ngFor="let t of toastService.toasts(); trackBy: trackById"
+    class="pk-toast"
+    [class]="'pk-toast--' + t.type"
+    role="alert">
+    <span class="material-icons pk-toast__icon">{{ iconMap[t.type] }}</span>
+    <div class="pk-toast__body">
+      <p class="pk-toast__title" *ngIf="t.title">{{ t.title }}</p>
+      <p class="pk-toast__msg">{{ t.message }}</p>
+    </div>
+    <button class="pk-toast__close" *ngIf="t.dismissible" (click)="toastService.dismiss(t.id)" aria-label="Close">
+      <span class="material-icons">close</span>
+    </button>
+    <div class="pk-toast__progress" *ngIf="(t.duration ?? 0) > 0"
+         [style.animation-duration]="t.duration + 'ms'"></div>
+  </div>
+</div>

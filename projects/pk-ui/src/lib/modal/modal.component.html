@@ -1,0 +1,22 @@
+<ng-container *ngIf="open">
+  <div class="pk-modal-backdrop" (click)="onBackdrop()" aria-hidden="true"></div>
+  <div class="pk-modal-wrap" role="dialog" [attr.aria-label]="title" aria-modal="true">
+    <div class="pk-modal" [class]="'pk-modal--' + size">
+      <!-- Header -->
+      <div class="pk-modal__header">
+        <h3 class="pk-modal__title">{{ title }}</h3>
+        <button *ngIf="closable" class="pk-modal__close" (click)="close()" aria-label="Close modal">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+      <!-- Body -->
+      <div class="pk-modal__body">
+        <ng-content />
+      </div>
+      <!-- Footer -->
+      <div class="pk-modal__footer">
+        <ng-content select="[pk-modal-footer]" />
+      </div>
+    </div>
+  </div>
+</ng-container>

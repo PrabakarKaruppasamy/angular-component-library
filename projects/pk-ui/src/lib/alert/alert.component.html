@@ -1,0 +1,10 @@
+<div class="pk-alert" [class]="'pk-alert--' + color" role="alert" *ngIf="visible()">
+  <span class="material-icons pk-alert__icon">{{ defaultIcon }}</span>
+  <div class="pk-alert__body">
+    <p class="pk-alert__title" *ngIf="title">{{ title }}</p>
+    <div class="pk-alert__content"><ng-content /></div>
+  </div>
+  <button class="pk-alert__dismiss" *ngIf="dismissible" (click)="dismiss()" aria-label="Dismiss alert">
+    <span class="material-icons">close</span>
+  </button>
+</div>
